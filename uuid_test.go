@@ -341,8 +341,8 @@ func TestValue(t *testing.T) {
 		t.Errorf("Error getting UUID value: %s", err)
 	}
 
-	if val != u.String() {
-		t.Errorf("Wrong value returned, should be equal: %s and %s", val, u)
+	if !u.Equal(FromBytesOrNil(val.([]byte))) {
+		t.Errorf("Wrong value returned, should be equal: %b and %b", val, u)
 	}
 }
 
@@ -354,8 +354,8 @@ func TestValueNil(t *testing.T) {
 		t.Errorf("Error getting UUID value: %s", err)
 	}
 
-	if val != Nil.String() {
-		t.Errorf("Wrong value returned, should be equal to UUID.Nil: %s", val)
+	if !u.Equal(FromBytesOrNil(val.([]byte))) {
+		t.Errorf("Wrong value returned, should be equal to UUID.Nil: %b", val)
 	}
 }
 

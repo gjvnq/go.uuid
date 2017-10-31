@@ -169,6 +169,16 @@ func Equal(u1 UUID, u2 UUID) bool {
 	return bytes.Equal(u1[:], u2[:])
 }
 
+// Equal returns true if u and u1 equals, otherwise returns false.
+func (u UUID) Equal(u1 UUID) bool {
+	return Equal(u, u1)
+}
+
+// Equal returns true if u is Nil
+func (u UUID) IsNil() bool {
+	return Equal(u, Nil)
+}
+
 // Version returns algorithm version used to generate UUID.
 func (u UUID) Version() uint {
 	return uint(u[6] >> 4)
@@ -302,7 +312,7 @@ func (u *UUID) UnmarshalBinary(data []byte) (err error) {
 
 // Value implements the driver.Valuer interface.
 func (u UUID) Value() (driver.Value, error) {
-	return u.String(), nil
+	return u.Bytes(), nil
 }
 
 // Scan implements the sql.Scanner interface.

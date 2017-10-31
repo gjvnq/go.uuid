@@ -1,3 +1,8 @@
+# Fork Modifications
+
+* SQL's Value() will now return the UUID in binary rather than in text.
+* Equal function added to UUID Struct.
+
 # UUID package for Go language
 
 [![Build Status](https://travis-ci.org/satori/go.uuid.png?branch=master)](https://travis-ci.org/satori/go.uuid)
